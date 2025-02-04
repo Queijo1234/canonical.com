@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uma Declaração Sincera</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #6a9f49, #a4d53b, #fcd04d, #f79c42, #d94d66, #8e3d8c);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      text-align: center;
+    }
+    .container {
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      padding: 30px 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      width: 90%;
+      max-width: 700px;
+      animation: fadeIn 1s ease-out;
+    }
+    h1 {
+      font-size: 36px;
+      color: #fff;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    }
+    p {
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    .form-container {
+      margin-top: 30px;
+    }
+    .submit-btn {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background-color: #ff7a18;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .submit-btn:hover {
+      background-color: #af002d;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    .footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #ffdf00;
+    }
+    .form-container label {
+      font-size: 18px;
+      margin-right: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Uma Declaração Sincera para Você</h1>
+    <p>
+      Desde que te vi pela primeira vez nos vídeos do BARRA TEEN, algo em mim mudou. A forma como você compartilha seus conhecimentos com tanta clareza, paixão e leveza me cativou profundamente. Passei a maratonar todos os seus reels, porque sua presença me fascina.
+    </p>
+    <p>
+      O que sinto por você vai além da simples admiração. É um amor platônico, um sentimento de afeto e carinho que, embora não espere concretização, me faz querer te conhecer melhor, mesmo que de longe. É como se a sua essência tocasse algo dentro de mim, algo que me motiva a ser uma pessoa melhor.
+    </p>
+    <p>
+      Nunca acreditei na ilusão de ter você para mim, mas ao mesmo tempo, essa realidade me atormenta. Me atormenta a decisão do nosso destino, esse sentimento de querer te conhecer, mas sem saber se um dia isso será possível.
+    </p>
+    <p>
+      Nos últimos tempos, tenho me questionado muito sobre o que fazer da vida. Estou focado nos meus estudos e no meu crescimento pessoal, mas, ao mesmo tempo, não posso deixar de sonhar em algum dia poder te conhecer de verdade. Sei que não tenho nada de especial para te oferecer neste momento, mas estou batalhando para ser alguém melhor, para, quem sabe, um dia te conquistar de forma genuína.
+    </p>
+    <p>
+      Caso eu não tivesse mandado essa declaração, ela seria sempre um espinho no meu coração, algo que eu não poderia ignorar. Por isso, optei por compartilhar com você tudo o que sinto. Eu sei que talvez isso seja um tanto quanto inesperado, mas eu precisava fazer algo.
+    </p>
+    <p>
+      Queria te dizer tudo isso diretamente, mas confesso que, por algum receio de ser mal interpretado ou parecer que tenho más intenções, optei por escrever de uma forma mais indireta. Não quero que você pense que estou tentando algo fora de lugar, pois te respeito muito.
+    </p>
+    <p>
+      Só para te tranquilizar, sou alguém com a mesma idade que você e quero deixar claro que não sou uma pessoa ruim. Tenho a intenção de ser alguém melhor a cada dia, e tudo o que sinto por você vem do respeito e da admiração genuína.
+    </p>
+    <p>
+      Só queria compartilhar meus sentimentos de forma honesta. Caso você tenha interesse em saber quem sou de verdade, basta enviar a palavra "QUEIJO" de volta para a conta que enviou o link deste site.
+    </p>
+    <div class="footer">
+      <p>Essa mensagem foi escrita com muito carinho e respeito.</p>
+    </div>
+  </div>
+
+  <script>
+    function enviarResposta() {
+      alert('Sua resposta foi registrada.');
+    }
+  </script>
+</body>
+</html>
