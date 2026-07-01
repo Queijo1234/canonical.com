@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eduardo Matos — Physicist in training</title>
+<meta name="description" content="Eduardo Matos, undergraduate physics student at Université Paris-Saclay and research intern at IJCLab, CNRS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b1420;
+    --bg-alt:#0f1c2c;
+    --panel:#111f31;
+    --ink:#eceff3;
+    --muted:#8496ab;
+    --accent:#6ee7c9;
+    --accent2:#f2a63a;
+    --line:rgba(236,239,243,0.09);
+    --line-strong:rgba(236,239,243,0.16);
+    --maxw:920px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--accent); color:var(--bg);}
+
+  /* background grid, evokes graph paper / detector readout */
+  .grid-bg{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:56px 56px;
+    -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+            mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+  }
+
+  a{color:var(--accent); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px; position:relative; z-index:1;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--accent);
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:''; width:22px; height:1px; background:var(--accent);}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    min-height:100svh;
+    display:flex; flex-direction:column; justify-content:center;
+    position:relative;
+    padding-top:60px; padding-bottom:60px;
+  }
+  .tracks{
+    position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none;
+  }
+  .tracks svg{width:100%; height:100%;}
+  .track-line{
+    fill:none; stroke:var(--accent); stroke-width:1; opacity:0.55;
+    stroke-dasharray:6 420;
+    animation:trace 7s linear infinite;
+  }
+  .track-line.amber{stroke:var(--accent2);}
+  .track-line:nth-child(2){animation-delay:-1.4s; opacity:0.4;}
+  .track-line:nth-child(3){animation-delay:-3.1s; opacity:0.3;}
+  .track-line:nth-child(4){animation-delay:-4.8s; opacity:0.35;}
+  @keyframes trace{
+    0%{stroke-dashoffset:420;}
+    100%{stroke-dashoffset:-420;}
+  }
+  .vertex{fill:var(--accent2); opacity:0.85;}
+
+  .hero-inner{position:relative; z-index:1;}
+  .kicker{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--muted);
+    font-size:0.82rem;
+    letter-spacing:0.08em;
+    margin-bottom:22px;
+  }
+  h1.name{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:clamp(3.2rem, 13vw, 7rem);
+    line-height:0.94;
+    letter-spacing:-0.02em;
+  }
+  h1.name span{display:block;}
+  h1.name .last{color:var(--accent);}
+  .role{
+    margin-top:26px;
+    font-size:clamp(1.05rem, 2.6vw, 1.3rem);
+    color:var(--ink);
+    max-width:34ch;
+  }
+  .role .org{color:var(--muted);}
+  .scroll-cue{
+    position:absolute; bottom:28px; left:28px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--muted);
+    display:flex; align-items:center; gap:10px;
+  }
+  .scroll-cue .bar{
+    width:1px; height:34px; background:linear-gradient(var(--muted), transparent);
+    animation:drop 1.8s ease-in-out infinite;
+  }
+  @keyframes drop{
+    0%,100%{transform:scaleY(0.4); opacity:0.4; transform-origin:top;}
+    50%{transform:scaleY(1); opacity:1; transform-origin:top;}
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{
+    padding:110px 0;
+    border-top:1px solid var(--line);
+    position:relative; z-index:1;
+  }
+  .section-head{
+    display:flex; align-items:baseline; gap:18px; margin-bottom:48px; flex-wrap:wrap;
+  }
+  h2.title{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:clamp(1.6rem, 4vw, 2.2rem);
+    letter-spacing:-0.01em;
+  }
+
+  /* About */
+  .about-grid{
+    display:grid; grid-template-columns:200px 1fr; gap:40px;
+  }
+  .about-grid p{color:var(--ink); font-size:1.05rem; max-width:62ch;}
+  .about-grid p + p{margin-top:20px;}
+  .pull{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:1.3rem;
+    color:var(--accent);
+    border-left:2px solid var(--accent);
+    padding-left:18px;
+    margin:26px 0;
+    max-width:38ch;
+  }
+
+  /* Journey / timeline */
+  .timeline{position:relative; padding-left:34px;}
+  .timeline::before{
+    content:''; position:absolute; left:6px; top:6px; bottom:6px; width:1px;
+    background:linear-gradient(var(--accent), var(--line) 85%);
+  }
+  .entry{position:relative; padding-bottom:52px;}
+  .entry:last-child{padding-bottom:0;}
+  .entry::before{
+    content:''; position:absolute; left:-34px; top:6px; width:11px; height:11px;
+    border-radius:50%; background:var(--bg); border:2px solid var(--accent);
+  }
+  .entry .year{
+    font-family:'IBM Plex Mono', monospace; color:var(--accent); font-size:0.9rem; letter-spacing:0.06em;
+  }
+  .entry h3{
+    font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:1.25rem; margin-top:6px;
+  }
+  .entry .place{
+    font-family:'IBM Plex Mono', monospace; color:var(--muted); font-size:0.85rem; margin-top:4px;
+  }
+  .entry p.desc{margin-top:10px; max-width:58ch; color:var(--ink); opacity:0.92;}
+
+  /* Research */
+  .research-list{display:flex; flex-direction:column; gap:1px; background:var(--line);}
+  .rcard{background:var(--bg); padding:30px 26px;}
+  .rcard .rhead{display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap;}
+  .rcard h3{font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:1.15rem;}
+  .rcard .loc{font-family:'IBM Plex Mono', monospace; font-size:0.8rem; color:var(--accent2); white-space:nowrap;}
+  .rcard .role{margin-top:4px; font-family:'IBM Plex Mono', monospace; font-size:0.82rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em;}
+  .rcard p{margin-top:12px; max-width:62ch; color:var(--ink); opacity:0.92;}
+
+  /* Contact */
+  .contact{
+    display:flex; flex-direction:column; align-items:flex-start; gap:28px;
+  }
+  .contact h2.title{font-size:clamp(2rem, 6vw, 3.2rem);}
+  .contact p{max-width:52ch; color:var(--muted); font-size:1.05rem;}
+
+  footer{
+    padding:36px 0 50px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--muted);
+    border-top:1px solid var(--line);
+  }
+
+  @media (max-width:680px){
+    .about-grid{grid-template-columns:1fr; gap:14px;}
+    section{padding:80px 0;}
+    .rcard .rhead{flex-direction:column; align-items:flex-start;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .track-line{animation:none; stroke-dasharray:none;}
+    .scroll-cue .bar{animation:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-bg" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="tracks" aria-hidden="true">
+    <svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice">
+      <path class="track-line" d="M -20,480 C 200,420 300,300 520,260 S 850,120 1020,60" />
+      <path class="track-line amber" d="M -20,120 C 220,180 340,260 520,260 S 780,380 1020,460" />
+      <path class="track-line" d="M -20,300 C 260,290 380,240 520,260 S 900,300 1020,300" />
+      <path class="track-line amber" d="M 520,260 C 560,180 620,90 700,20" />
+      <circle class="vertex" cx="520" cy="260" r="4"></circle>
+    </svg>
+  </div>
+  <div class="wrap hero-inner">
+    <div class="kicker">§ 00 — Éduard Matos, undergraduate physics</div>
+    <h1 class="name"><span>Eduardo</span><span class="last">Matos.</span></h1>
+    <p class="role">Physicist in training. Research intern at <span class="org">IJCLab · CNRS</span>, <span class="org">Université Paris-Saclay</span>.</p>
+  </div>
+  <div class="scroll-cue"><span class="bar"></span>Scroll</div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">§ 01</span>
+      <h2 class="title">About</h2>
+    </div>
+    <div class="about-grid">
+      <div class="eyebrow" style="margin-top:4px;">Belo Horizonte → Paris</div>
+      <div>
+        <p>I am a 17-year-old undergraduate student in Physics at Université Paris-Saclay, originally from Belo Horizonte, Brazil. My path to research was unconventional.</p>
+        <p>After being admitted to both ITA and IME — two of Brazil's most selective engineering institutions — I chose to leave in my first year and move to France. That decision was not an escape; it was a commitment. I realized that what drives me is not engineering as a profession, but physics as a way of thinking.</p>
+        <p class="pull">I wanted to follow curiosity, not a career track — so I left.</p>
+        <p>My long-term goal is to pursue a PhD and contribute to fundamental research — the kind of science that asks questions before it knows whether the answers will be useful.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">§ 02</span>
+      <h2 class="title">Journey</h2>
+    </div>
+    <div class="timeline">
+      <div class="entry">
+        <div class="year">2024</div>
+        <h3>Scientific Olympiads</h3>
+        <div class="place">Brazil</div>
+        <p class="desc">National scientific olympiad participation. Developed early interest in theoretical and mathematical reasoning.</p>
+      </div>
+      <div class="entry">
+        <div class="year">2024</div>
+        <h3>IYPT — International Young Physicists' Tournament</h3>
+        <div class="place">Team Brazil</div>
+        <p class="desc">Represented Brazil at the International Young Physicists' Tournament, tackling open-ended research problems and defending findings through scientific debate against international teams.</p>
+      </div>
+      <div class="entry">
+        <div class="year">2025</div>
+        <h3>Admitted to IME</h3>
+        <div class="place">Instituto Militar de Engenharia · Rio de Janeiro</div>
+        <p class="desc">Admitted to one of Brazil's most selective engineering institutions. Chose to pursue physics over a conventional engineering path, and moved to France.</p>
+      </div>
+      <div class="entry">
+        <div class="year">2025</div>
+        <h3>APMO — Asian Pacific Mathematics Olympiad</h3>
+        <div class="place">International Competition</div>
+        <p class="desc">Competed in the Asian Pacific Mathematics Olympiad, an international contest in advanced mathematical problem-solving.</p>
+      </div>
+      <div class="entry">
+        <div class="year">2026</div>
+        <h3>Université Paris-Saclay</h3>
+        <div class="place">Paris · France</div>
+        <p class="desc">Enrolled in undergraduate Physics. Research intern at IJCLab (Irène Joliot-Curie Physics Laboratory), CNRS/IN2P3. Work spans laboratory instrumentation, system simulation, and data analysis.</p>
+      </div>
+      <div class="entry">
+        <div class="year">2026</div>
+        <h3>CERN &amp; Synchrotron SOLEIL</h3>
+        <div class="place">Geneva · Saint-Aubin</div>
+        <p class="desc">Research visits to world-class facilities as part of internship work at IJCLab.</p>
+      </div>
+      <div class="entry">
+        <div class="year">2026</div>
+        <h3>IMC — International Mathematical Competition for University Students</h3>
+        <div class="place">International Competition</div>
+        <p class="desc">Competed in the IMC, a global mathematics competition for undergraduate students, testing depth in university-level problem-solving.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">§ 03</span>
+      <h2 class="title">Research</h2>
+    </div>
+    <div class="research-list">
+      <div class="rcard">
+        <div class="rhead">
+          <h3>IJCLab · CNRS / IN2P3 · Université Paris-Saclay</h3>
+          <span class="loc">Orsay, France</span>
+        </div>
+        <div class="role">Laboratory Instrumentation &amp; Data Analysis</div>
+        <p>Research intern working on system simulation and data analysis at one of France's leading nuclear and particle physics laboratories.</p>
+      </div>
+      <div class="rcard">
+        <div class="rhead">
+          <h3>CERN</h3>
+          <span class="loc">Geneva, Switzerland</span>
+        </div>
+        <div class="role">Research Visit</div>
+        <p>Exposure to experimental high-energy physics infrastructure at the European Organization for Nuclear Research.</p>
+      </div>
+      <div class="rcard">
+        <div class="rhead">
+          <h3>Synchrotron SOLEIL</h3>
+          <span class="loc">Saint-Aubin, France</span>
+        </div>
+        <div class="role">Research Visit</div>
+        <p>Visit to France's national synchrotron facility as part of ongoing research activities at IJCLab.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact">
+    <span class="eyebrow">§ 04</span>
+    <h2 class="title">Let's connect.</h2>
+    <p>Physics student, researcher, and someone who believes the most interesting questions don't yet have answers.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Eduardo Matos — Physics, Université Paris-Saclay</div>
+</footer>
+
+</body>
+</html>
